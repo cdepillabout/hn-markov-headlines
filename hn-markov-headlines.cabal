@@ -58,10 +58,12 @@ executable hn-markov-headlines
   
   -- Other library packages from which modules are imported.
   build-depends:       base >=4.7 && <4.8
+                     , hackernews
   
   -- Directories containing source files.
   hs-source-dirs:      src
   
+  ghc-options:         -Wall -threaded -rtsopts
   -- Base language which the package is written in.
   default-language:    Haskell2010
   
