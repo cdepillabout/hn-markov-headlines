@@ -61,6 +61,7 @@ executable hn-download-headlines
                      , bytestring
                      , cereal
                      , hackernews
+                     , mtl
                      , text
                      , transformers
   
@@ -86,6 +87,7 @@ executable hn-create-markov-headlines
                      , bytestring
                      , cereal
                      , hackernews
+                     , mtl
                      , text
                      , transformers
   

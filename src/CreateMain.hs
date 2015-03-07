@@ -40,10 +40,11 @@ serialize titleList = do
         BS.putStr encodedTitleList
 
 main :: IO ()
-main = void $ runMaybeT $ do
-    storiesList <- getStoriesList
-    titleList <- downloadStories storiesList
-    lift $ serialize titleList
+main = return ()
+-- main = void $ runMaybeT $ do
+--     storiesList <- getStoriesList
+--     titleList <- downloadStories storiesList
+--     lift $ serialize titleList
 
 
 
