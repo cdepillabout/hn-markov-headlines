@@ -6,10 +6,10 @@ all:
 .cabal-sandbox:
 	cabal sandbox init
 
-.cabal-sandbox/bin/hn-download-headlines:
+.cabal-sandbox/bin/hn-download-headlines: src/DownloadMain.hs
 	$(MAKE) install
 
-.cabal-sandbox/bin/hn-create-markov-headlines:
+.cabal-sandbox/bin/hn-create-markov-headlines: src/CreateMain.hs
 	$(MAKE) install
 
 storiesList:

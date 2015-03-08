@@ -89,6 +89,7 @@ executable hn-create-markov-headlines
                      , hackernews
                      , markov-chain
                      , mtl
+                     , random
                      , text
                      , transformers
   
