@@ -39,7 +39,9 @@ downloadStory tryNum (storyInt, index) = do
 downloadStories :: [Int] -> IO [(Int, Text)]
 downloadStories storiesList = do
         let storyWithIndexList = zip storiesList [1..]
-        let downloadedListErrorT = map (downloadStory 0) (take 20 storyWithIndexList)
+        let downloadedListErrorT = map (downloadStory 0)
+                                       -- (take 20 storyWithIndexList)
+                                       storyWithIndexList
         downloadedList <- mapM runErrorT downloadedListErrorT
         return $ rights downloadedList
 
