@@ -87,6 +87,7 @@ executable hn-create-markov-headlines
                      , bytestring
                      , cereal
                      , hackernews
+                     , markov-chain
                      , mtl
                      , text
                      , transformers
