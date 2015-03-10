@@ -2,10 +2,10 @@
 module Main where
 
 import Control.Monad.Error (ErrorT, runErrorT)
-import Control.Monad.Trans.Class
+import Control.Monad.Trans.Class (lift)
 import Data.ByteString (ByteString)
 import qualified Data.ByteString as BS
-import Data.Either
+import Data.Either (rights)
 import Data.Serialize (encode)
 import Data.Text (Text)
 import qualified Data.Text as Text
@@ -15,9 +15,7 @@ import Web.HackerNews -- (getTopStories, hackerNews)
 
 getStoriesList :: ErrorT String IO [Int]
 getStoriesList = do
-    --lift $ putStrLn "Starting"
     result <- lift $ hackerNews getTopStories
-    --lift $ putStrLn "Got response from api..."
     case result of
         Left _ -> fail "failed to get a response" -- MaybeT $ return Nothing
         Right (TopStories storiesList) -> return storiesList
@@ -49,7 +47,6 @@ serialize :: [(Int, Text)] -> IO ()
 serialize titleList = do
         let byteStringTitleList = map (fmap encodeUtf8) titleList
         let encodedTitleList = encode byteStringTitleList
-        -- print titleList
         BS.putStr encodedTitleList
 
 downloadAndSerialize :: IO (Either String ())
