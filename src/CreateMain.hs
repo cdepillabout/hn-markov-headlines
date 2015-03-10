@@ -24,7 +24,9 @@ import Web.HackerNews -- (getTopStories, hackerNews)
 makeSomeStories :: [(Int, ByteString)] -> IO ()
 makeSomeStories storiesList = do
         let byteStringTitles = fmap snd storiesList
-            stringTitles = fmap Char8.unpack byteStringTitles
+            stringTitles = fmap (Text.unpack . decodeUtf8) byteStringTitles
+        -- let byteStringTitleList = map (fmap encodeUtf8) titleList
+        -- let encodedTitleList = encode byteStringTitleList
         stdGen <- getStdGen
         -- forM_ stringTitles print
         forM_ (take 100 $ runMulti 5 stringTitles 0 stdGen) print
